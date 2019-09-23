@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Gráficos avanzados | Gráficos con R</title>
+  <meta name="description" content="2 Gráficos avanzados | Gráficos con R" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Gráficos avanzados | Gráficos con R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Gráficos avanzados | Gráficos con R" />
+  
+  
+  
+
+<meta name="author" content="Olivier Nuñez" />
+
+
+<meta name="date" content="2019-09-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="graficos-basicos-en-el-analisis-de-datos.html">
+<link rel="next" href="rmarkdown-y-shiny.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span. { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preámbulo</a></li>
+<li class="chapter" data-level="1" data-path="graficos-basicos-en-el-analisis-de-datos.html"><a href="graficos-basicos-en-el-analisis-de-datos.html"><i class="fa fa-check"></i><b>1</b> Gráficos básicos en el análisis de datos</a><ul>
+<li class="chapter" data-level="1.1" data-path="graficos-basicos-en-el-analisis-de-datos.html"><a href="graficos-basicos-en-el-analisis-de-datos.html#distribucion-de-una-variable"><i class="fa fa-check"></i><b>1.1</b> Distribución de una variable</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="graficos-basicos-en-el-analisis-de-datos.html"><a href="graficos-basicos-en-el-analisis-de-datos.html#histograma"><i class="fa fa-check"></i><b>1.1.1</b> Histograma</a></li>
+<li class="chapter" data-level="1.1.2" data-path="graficos-basicos-en-el-analisis-de-datos.html"><a href="graficos-basicos-en-el-analisis-de-datos.html#diagrama-de-caja-boxplot"><i class="fa fa-check"></i><b>1.1.2</b> Diagrama de caja (boxplot)</a></li>
+<li class="chapter" data-level="1.1.3" data-path="graficos-basicos-en-el-analisis-de-datos.html"><a href="graficos-basicos-en-el-analisis-de-datos.html#diagrama-de-barras"><i class="fa fa-check"></i><b>1.1.3</b> Diagrama de barras</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="graficos-basicos-en-el-analisis-de-datos.html"><a href="graficos-basicos-en-el-analisis-de-datos.html#relacion-entre-dos-variables"><i class="fa fa-check"></i><b>1.2</b> Relación entre dos variables</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="graficos-basicos-en-el-analisis-de-datos.html"><a href="graficos-basicos-en-el-analisis-de-datos.html#diagrama-de-dispersion"><i class="fa fa-check"></i><b>1.2.1</b> Diagrama de dispersión</a></li>
+<li class="chapter" data-level="1.2.2" data-path="graficos-basicos-en-el-analisis-de-datos.html"><a href="graficos-basicos-en-el-analisis-de-datos.html#dotchart"><i class="fa fa-check"></i><b>1.2.2</b> Dotchart</a></li>
+<li class="chapter" data-level="1.2.3" data-path="graficos-basicos-en-el-analisis-de-datos.html"><a href="graficos-basicos-en-el-analisis-de-datos.html#relacion-con-una-variable-temporal"><i class="fa fa-check"></i><b>1.2.3</b> Relación con una variable temporal</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html"><i class="fa fa-check"></i><b>2</b> Gráficos avanzados</a><ul>
+<li class="chapter" data-level="2.1" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#elementos-de-un-grafico"><i class="fa fa-check"></i><b>2.1</b> Elementos de un gráfico</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#datos"><i class="fa fa-check"></i><b>2.1.1</b> Datos</a></li>
+<li class="chapter" data-level="2.1.2" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#esteticas-aes"><i class="fa fa-check"></i><b>2.1.2</b> Estéticas (<code>aes</code>)</a></li>
+<li class="chapter" data-level="2.1.3" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#capas-geoms"><i class="fa fa-check"></i><b>2.1.3</b> Capas (<code>geoms</code>)</a></li>
+<li class="chapter" data-level="2.1.4" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#facetas"><i class="fa fa-check"></i><b>2.1.4</b> Facetas</a></li>
+<li class="chapter" data-level="2.1.5" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#toque-final"><i class="fa fa-check"></i><b>2.1.5</b> Toque final</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#mapas"><i class="fa fa-check"></i><b>2.2</b> Mapas</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#mas-ejemplos-de-mapas-con-puntos"><i class="fa fa-check"></i><b>2.2.1</b> Más ejemplos de mapas con puntos</a></li>
+<li class="chapter" data-level="2.2.2" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#mas-alla-de-los-puntos-densidades-y-poligonos"><i class="fa fa-check"></i><b>2.2.2</b> Más allá de los puntos: densidades y poligonos</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#arboles-filogeneticos"><i class="fa fa-check"></i><b>2.3</b> Árboles filogenéticos</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#importacion-de-un-arbol"><i class="fa fa-check"></i><b>2.3.1</b> Importación de un árbol</a></li>
+<li class="chapter" data-level="2.3.2" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#representacion-basica"><i class="fa fa-check"></i><b>2.3.2</b> Representación básica</a></li>
+<li class="chapter" data-level="2.3.3" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#agrupacion-de-nodos"><i class="fa fa-check"></i><b>2.3.3</b> Agrupación de nodos</a></li>
+<li class="chapter" data-level="2.3.4" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#anadir-heatmap"><i class="fa fa-check"></i><b>2.3.4</b> Añadir Heatmap</a></li>
+<li class="chapter" data-level="2.3.5" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#visualizacion-de-multiple-arboles"><i class="fa fa-check"></i><b>2.3.5</b> Visualización de multiple arboles</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="rmarkdown-y-shiny.html"><a href="rmarkdown-y-shiny.html"><i class="fa fa-check"></i><b>3</b> Rmarkdown y shiny</a><ul>
+<li class="chapter" data-level="3.1" data-path="rmarkdown-y-shiny.html"><a href="rmarkdown-y-shiny.html#rmarkdown"><i class="fa fa-check"></i><b>3.1</b> Rmarkdown</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="rmarkdown-y-shiny.html"><a href="rmarkdown-y-shiny.html#rmarkdown-en-15-mn"><i class="fa fa-check"></i><b>3.1.1</b> Rmarkdown en 15 mn</a></li>
+<li class="chapter" data-level="3.1.2" data-path="rmarkdown-y-shiny.html"><a href="rmarkdown-y-shiny.html#elementos-de-un-documento-rmarkdown"><i class="fa fa-check"></i><b>3.1.2</b> Elementos de un documento Rmarkdown</a></li>
+<li class="chapter" data-level="3.1.3" data-path="rmarkdown-y-shiny.html"><a href="rmarkdown-y-shiny.html#tablas-con-rmarkdown"><i class="fa fa-check"></i><b>3.1.3</b> Tablas con Rmarkdown</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="rmarkdown-y-shiny.html"><a href="rmarkdown-y-shiny.html#shiny"><i class="fa fa-check"></i><b>3.2</b> Shiny</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>4</b> Referencias</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Gráficos con R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="graficos-avanzados" class="section level1">
+<h1><span class="header-section-number">2</span> Gráficos avanzados</h1>
+<p>Esta sección es una introducción a las ideas del libro <em>The Grammar of Graphics</em> de Leland Wilkinson (2005) tal y como vienen implementadas en el paquete <code>ggplot2</code> de Hadley Wickham (2009).</p>
+<p align="center">
+<img src="imagenes/wilkinson.jpg" width="200" />
+<img src="imagenes/Wickham.jpg" width="200" />
+</p>
+<p>A continuación veremos los elementos principales de esta gramática y como nos permiten elaborar de manera sencilla representaciones visuales del comportamiento de una variable de interés a través de los distintos niveles de otras.</p>
+<p>El gráfico siguiente muestra la evolución de la tasa de mortalidad por cáncer según la localización, en España durante el periodo 1975-2012.</p>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-25-1.png" width="1152" /></p>
+<div id="elementos-de-un-grafico" class="section level2">
+<h2><span class="header-section-number">2.1</span> Elementos de un gráfico</h2>
+<p>El gráfico anterior, se obtuvo de la siguiente manera. En primer lugar, se carga los datos de mortalidad:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(data.table)
+<span class="kw">load</span>(<span class="st">&quot;data/cancer.RDA&quot;</span>) <span class="co">#carga los datos</span>
+cancer</code></pre>
+<pre><code>##          sexo periodo             tumor       tasa
+##    1: Hombres    1975 C.BUCAL Y FARINGE   5.541879
+##    2: Hombres    1976 C.BUCAL Y FARINGE   5.512168
+##    3: Hombres    1977 C.BUCAL Y FARINGE   5.827874
+##    4: Hombres    1978 C.BUCAL Y FARINGE   5.323451
+##    5: Hombres    1979 C.BUCAL Y FARINGE   5.461059
+##   ---                                             
+## 3188: Mujeres    2008 TODOS MUERTOS     385.294977
+## 3189: Mujeres    2009 TODOS MUERTOS     373.009470
+## 3190: Mujeres    2010 TODOS MUERTOS     359.444478
+## 3191: Mujeres    2011 TODOS MUERTOS     357.461639
+## 3192: Mujeres    2012 TODOS MUERTOS     359.691700</code></pre>
+<p>La expresión de <code>ggplot2</code> para crear el gráfico fue:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(cancer) <span class="op">+</span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> periodo, <span class="dt">y =</span> tasa, <span class="dt">col =</span> sexo) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size=</span><span class="dv">1</span>) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_log10</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>tumor) </code></pre>
+<p>Esta expresión combina varios elementos que discutiremos con detalle más adelante:</p>
+<ul>
+<li><strong>Datos</strong>: siempre un “data.frame”</li>
+<li><strong>Estéticas</strong>: elementos representables gráficamente (la posición <code>x</code> e <code>y</code>, el color, la forma, …) en columnas del data.frame.</li>
+<li><strong>Geometrías</strong> (o capas): puntos, rectas, histogramas, densidades, etc. También se llaman capas porque pueden superponerse.</li>
+<li><strong>Facetas</strong>: parten un gráfico en sublienzos preservando las escalas (pequeños múltiplos)</li>
+</ul>
+<div id="datos" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> Datos</h3>
+<p>Uno de los elementos más importantes de un gráfico son los datos que se quieren representar. Una particularidad de <code>ggplot2</code> es que solo acepta un tipo de datos: <code>data.frames</code>.</p>
+<p>Por otro lado, es preferible que los datos estén en un formato “largo” (long format), es decir, una columna para cada dimensión y una fila para cada observación.
+Para ilustrar esta idea, se considera la base de datos <code>VADeaths</code> que proporciona tasas de mortalidad (por 1000 personas/año) en Virginia (1940) por grupos socio-demográficos y de edad.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Rural Male</th>
+<th align="right">Rural Female</th>
+<th align="right">Urban Male</th>
+<th align="right">Urban Female</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>50-54</td>
+<td align="right">11.7</td>
+<td align="right">8.7</td>
+<td align="right">15.4</td>
+<td align="right">8.4</td>
+</tr>
+<tr class="even">
+<td>55-59</td>
+<td align="right">18.1</td>
+<td align="right">11.7</td>
+<td align="right">24.3</td>
+<td align="right">13.6</td>
+</tr>
+<tr class="odd">
+<td>60-64</td>
+<td align="right">26.9</td>
+<td align="right">20.3</td>
+<td align="right">37.0</td>
+<td align="right">19.3</td>
+</tr>
+<tr class="even">
+<td>65-69</td>
+<td align="right">41.0</td>
+<td align="right">30.9</td>
+<td align="right">54.6</td>
+<td align="right">35.1</td>
+</tr>
+<tr class="odd">
+<td>70-74</td>
+<td align="right">66.0</td>
+<td align="right">54.3</td>
+<td align="right">71.1</td>
+<td align="right">50.0</td>
+</tr>
+</tbody>
+</table>
+<p>Antes de representar los datos, convertimos la base en un formato alargado.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(data.table)
+mortalidad =<span class="st"> </span><span class="kw">data.table</span>(<span class="kw">melt</span>(VADeaths))
+<span class="kw">names</span>(mortalidad) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;edad&quot;</span>,<span class="st">&quot;grupo&quot;</span>,<span class="st">&quot;tasa&quot;</span>)
+mortalidad</code></pre>
+<pre><code>##      edad        grupo tasa
+##  1: 50-54   Rural Male 11.7
+##  2: 55-59   Rural Male 18.1
+##  3: 60-64   Rural Male 26.9
+##  4: 65-69   Rural Male 41.0
+##  5: 70-74   Rural Male 66.0
+##  6: 50-54 Rural Female  8.7
+##  7: 55-59 Rural Female 11.7
+##  8: 60-64 Rural Female 20.3
+##  9: 65-69 Rural Female 30.9
+## 10: 70-74 Rural Female 54.3
+## 11: 50-54   Urban Male 15.4
+## 12: 55-59   Urban Male 24.3
+## 13: 60-64   Urban Male 37.0
+## 14: 65-69   Urban Male 54.6
+## 15: 70-74   Urban Male 71.1
+## 16: 50-54 Urban Female  8.4
+## 17: 55-59 Urban Female 13.6
+## 18: 60-64 Urban Female 19.3
+## 19: 65-69 Urban Female 35.1
+## 20: 70-74 Urban Female 50.0</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(mortalidad)</code></pre>
+<p>El código anterior crea un objeto, <code>p</code> que viene a ser un proto-gráfico: contiene los datos que vamos a utilizar, los del conjunto de datos <code>mortalidad</code>. Obviamente, el código anterior es insuficiente para crear un gráfico: aún no hemos indicado qué queremos hacer con <code>mortalidad</code>.</p>
+</div>
+<div id="esteticas-aes" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> Estéticas (<code>aes</code>)</h3>
+<p>En un conjunto de datos hay columnas: edad, altura, ingresos, temperatura, etc. En un gráfico hay, en la terminología de <code>ggplot2</code>, <em>aesthetic</em>. Estéticas son, por ejemplo, la distancia horizontal o vertical, el color, la forma (de un punto), el tamaño (de un punto o el grosor de una línea), etc.</p>
+<pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">aes</span>(<span class="dt">x =</span> edad, <span class="dt">y =</span> tasa, <span class="dt">colour =</span> grupo)</code></pre>
+<p>se están añadiendo a <code>p</code> información sobre las estéticas que tiene que utilizar y qué variables de <code>mortalidad</code> tiene que utilizar:</p>
+<ul>
+<li>La abscisa <code>x</code>, vendrá dada por el grupo de edad.</li>
+<li>La ordenada <code>y</code>, por la tasa de mortalidad.</li>
+<li>El color, por el grupo socio-demográfico.</li>
+</ul>
+<p>Al <em>protográfico</em> se le han sumado las estéticas. En las secciones siguientes se le <em>sumarán</em> otros elementos adicionales. Lo importante es recordar cómo la suma es el signo que combina los elementos que componen el lenguaje de los gráficos.</p>
+<p>De todos modos, es habitual combinar ambos pasos en una única expresión</p>
+<pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(mortalidad, <span class="kw">aes</span>(<span class="dt">x =</span> edad, <span class="dt">y =</span> tasa, <span class="dt">colour =</span> grupo))</code></pre>
+<p>El objeto <code>p</code> resultante aún no es un gráfico ni se puede representar. Le faltan capas, que es el objeto de la siguiente sección. No obstante, se puede inspeccionar la relación (o <em>mapeo</em>) entre estéticas y columnas de los datos:</p>
+<pre class="sourceCode r"><code class="sourceCode r">p<span class="op">$</span>mapping</code></pre>
+<pre><code>## Aesthetic mapping: 
+## * `x`      -&gt; `edad`
+## * `y`      -&gt; `tasa`
+## * `colour` -&gt; `grupo`</code></pre>
+<p>¿Cuántas estéticas existen? Alrededor de una docena, aunque se utilizan, generalmente, menos:</p>
+<ul>
+<li><code>x</code> e <code>y</code>, coordenadas horizontal y vertical.</li>
+<li><code>colour</code>, para el color.</li>
+<li><code>size</code>, para el tamaño.</li>
+<li><code>shape</code>, que indica la forma de los puntos (cuadrados, triángulos, etc.) de los puntos o del trazo (continuo, punteado) de las líneas.</li>
+<li><code>alpha</code> para la transparencia: los valores más altos tendrían formas opacas y los más bajos, casi transparentes. También muy útil para el solapamiento de puntos.</li>
+<li><code>fill</code>, para el color de relleno de las formas sólidas (barras, etc.).</li>
+</ul>
+<div class="nota">
+<p>
+Hay que advertir que no todas las <em>estéticas</em> tienen la misma potencia en un gráfico. El ojo humano percibe fácilmente longitudes distintas. Pero tiene problemas para comparar áreas (que es lo que regula la estética <code>size</code>) o intensidades de color. Se recomienda usar las estéticas más potentes para representar las variables más importantes.
+</p>
+</div>
+</div>
+<div id="capas-geoms" class="section level3">
+<h3><span class="header-section-number">2.1.3</span> Capas (<code>geoms</code>)</h3>
+<p>Las capas (o <code>geoms</code> para <code>ggplot2</code>) son los verbos del lenguaje de los gráficos. Indican qué hacer con los datos y las estéticas elegidas, cómo representarlos en un lienzo:</p>
+<pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()
+p</code></pre>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+<p>Una vez añadida una capa al gráfico, este puede pintarse (que es lo que ocurre al llamar a <code>p</code>). Se obtiene el mismo resultado haciendo, en una única línea,</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mortalidad, <span class="kw">aes</span>(<span class="dt">x =</span> edad, <span class="dt">y =</span> tasa, <span class="dt">colour =</span> grupo)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre>
+<p>Una característica de las capas, y de ahí su nombre, es que pueden superponerse. Por ejemplo,</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mortalidad, <span class="kw">aes</span>(<span class="dt">x =</span> edad, <span class="dt">y =</span> tasa, <span class="dt">colour =</span> grupo, <span class="dt">group=</span> grupo)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>()</code></pre>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Se requiere la estética `group` para conectar los puntos de una linea cuando la variable en abscisa es un factor.</span></code></pre>
+<p>Existen muchos tipos de capas. Los más usuales son <code>geom_point</code>, <code>geom_line</code>, <code>geom_histogram</code>, <code>geom_bar</code> y <code>geom_boxplot</code> (ver las página <code>http://docs.ggplot2.org/current/</code>) para una lista actualizada.</p>
+<p>Abajo una representación mediante un diagrama de barra de los datos anteriores:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mortalidad, <span class="kw">aes</span>(<span class="dt">x =</span> edad, <span class="dt">y =</span> tasa, <span class="dt">fill =</span> grupo)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>,<span class="dt">position=</span><span class="st">&quot;dodge&quot;</span>)</code></pre>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
+<div class="ej">
+<p>
+Elaborar el siguientes gráfico sobre la evolución del paro en España. Utilizar la capa <code>geom_smooth</code> para suavizar la tendencia y la estética <code>linetype</code> para distintos tipos de curvas.
+</p>
+</div>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-40-1.png" width="960" /></p>
+</div>
+<div id="facetas" class="section level3">
+<h3><span class="header-section-number">2.1.4</span> Facetas</h3>
+<p>Las facetas permiten subdividir un gráfico y suele ser un recurso muy eficiente para describir el comportamiento de una variable en función de otra variable categórica. Así por ejemplo, con los datos de mortalidad,</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mortalidad, <span class="kw">aes</span>(<span class="dt">x =</span> edad, <span class="dt">y =</span> tasa)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_grid</span>(<span class="op">~</span>grupo)</code></pre>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-41-1.png" width="1056" /></p>
+<p>crea tres gráficos dispuestos horizontalmente que comparan la relación entre la anchura y la longitud del pétalo de las tres especies de iris. Una característica de estos gráficos, que es crítica para poder hacer comparaciones adecuadas, es que comparten ejes.</p>
+<p>Los gráficos podrían disponerse verticalmente reemplazando <code>facet_grid(~grupo)</code> por <code>facet_grid(grupo~)</code> en el código anterior. Además, se puede subdividir el lienzo por dos (¡o más!) variables así:</p>
+<pre class="sourceCode r"><code class="sourceCode r">mortalidad[,<span class="kw">c</span>(<span class="st">&quot;zone&quot;</span>, <span class="st">&quot;sex&quot;</span>)<span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">tstrsplit</span>(grupo, <span class="st">&quot; &quot;</span>)]
+<span class="kw">ggplot</span>(mortalidad, <span class="kw">aes</span>(<span class="dt">x =</span> edad, <span class="dt">y =</span> tasa)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_grid</span>(zone <span class="op">~</span><span class="st"> </span>sex)</code></pre>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+<div class="ej">
+<p>
+Elaborar los siguientes gráficos sobre la evolución del paro. Para el segundo gráfico, se puede filtrar la base original con el comando:
+</p>
+<p>
+paro.ZHT &lt;- subset(paro,Provincia %in% c(“Zaragoza”, “Huesca”, “Teruel”))
+</p>
+</div>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-44-1.png" width="1056" /><img src="graficosConR_files/figure-html/unnamed-chunk-44-2.png" width="1056" /></p>
+<p>En caso de haber muchas categorías (p.e., todas las provincias), puede usarse la función <code>facet_wrap</code> para distribuir las subgráficas en una cuadrícula (ver gráfico a principio de la sección).</p>
+</div>
+<div id="toque-final" class="section level3">
+<h3><span class="header-section-number">2.1.5</span> Toque final</h3>
+<div id="etiquetas" class="section level4">
+<h4><span class="header-section-number">2.1.5.1</span> Etiquetas</h4>
+<p>Las estéticas se pueden etiquetar con la función <code>labs</code>. Además, se le puede añadir un título al gráfico usando la función <code>ggtitle</code>. Por ejemplo, en el gráfico anterior se pueden re-etiquetar los ejes y la leyenda escribiendo</p>
+<pre class="sourceCode r"><code class="sourceCode r">obesidad&lt;-<span class="kw">fread</span>(<span class="st">&quot;data/obesidad.csv&quot;</span>)
+p&lt;-<span class="kw">ggplot</span>(obesidad,<span class="kw">aes</span>(<span class="dt">x=</span>renta,<span class="dt">y=</span>imc,<span class="dt">color=</span>region))<span class="op">+</span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;lm&quot;</span>)
+p <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;Relación entre Indice de Masa Corporal (IMC) y renta&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">        </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Renta (en miles de $ por año)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;IMC (kg/m2)&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;Continente&quot;</span>)</code></pre>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+</div>
+<div id="escalas" class="section level4">
+<h4><span class="header-section-number">2.1.5.2</span> Escalas</h4>
+<p>Las escalas de las estéticas pueden ser modificadas para mejorar la claridad del gráfico.</p>
+<pre class="sourceCode r"><code class="sourceCode r">p&lt;-<span class="kw">ggplot</span>(obesidad,<span class="kw">aes</span>(<span class="dt">x=</span>renta,<span class="dt">y=</span>imc))<span class="op">+</span><span class="kw">geom_point</span>(<span class="dt">size=</span>.<span class="dv">1</span>)<span class="op">+</span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;lm&quot;</span>)
+p </code></pre>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r">p<span class="op">+</span><span class="kw">scale_x_log10</span>()<span class="op">+</span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks=</span><span class="kw">seq</span>(<span class="dv">10</span>,<span class="dv">50</span>,<span class="dv">10</span>),<span class="dt">trans=</span><span class="st">&quot;log&quot;</span>)</code></pre>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(obesidad,<span class="kw">aes</span>(<span class="dt">x=</span>renta,<span class="dt">y=</span>imc,<span class="dt">color=</span>region))<span class="op">+</span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;lm&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span>.<span class="dv">1</span>,<span class="dt">alpha=</span>.<span class="dv">1</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_log10</span>()<span class="op">+</span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks=</span><span class="kw">seq</span>(<span class="dv">10</span>,<span class="dv">50</span>,<span class="dv">10</span>),<span class="dt">trans=</span><span class="st">&quot;log&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_color_manual</span>(<span class="st">&quot;Continente&quot;</span>,<span class="dt">values=</span><span class="kw">c</span>(<span class="st">&quot;green4&quot;</span>,<span class="st">&quot;red4&quot;</span>),<span class="dt">limits=</span><span class="kw">c</span>(<span class="st">&quot;Europa&quot;</span>,<span class="st">&quot;Asia&quot;</span>))</code></pre>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+</div>
+<div id="temas" class="section level4">
+<h4><span class="header-section-number">2.1.5.3</span> Temas</h4>
+<p>Los <em>temas</em> de <code>ggplot2</code> permiten modificar aspectos estéticos del gráfico que no tienen que ver con los datos en sí. Eso incluye los ejes, etiquetas, colores de fondo, el tamaño de los márgenes, etc. Cambiar el tema por defecto, puede ser útil cuando los gráficos tienen que adecuarse a una imagen corporativa o atenerse a algún criterio de publicación.</p>
+<p>El tema que usa <code>ggplot2</code> por defecto es <code>theme_grey</code>. Al escribir <code>theme_grey()</code> en la consola de R, se muestran alrededor de cuarenta elementos modificables y sus atributos tal y como los define dicho tema.</p>
+<p>¿Qué se puede hacer con los temas? Una primera opción es elegir otro. Por ejemplo, se puede reemplazar el habitual por otros disponibles en el paquete como <code>theme_bw</code> (o <code>theme_classic</code>) haciendo</p>
+<pre class="sourceCode r"><code class="sourceCode r">p <span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(<span class="op">~</span>region) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>()
+p <span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(<span class="op">~</span>region) <span class="op">+</span><span class="st"> </span><span class="kw">theme_classic</span>()</code></pre>
+<p>Es posible usar tanto los temas que incluye <code>ggplot2</code> por defecto como otros creados por la comunidad. Algunos, por ejemplo, tratan de imitar el estilo de publicaciones reconocidas como The Economist o similares. Algunos están recogidos en paquetes como, por ejemplo, <code>ggthemes</code>.</p>
+</div>
+<div id="exportacion-de-los-graficos" class="section level4">
+<h4><span class="header-section-number">2.1.5.4</span> Exportación de los graficos</h4>
+<p>Una vez creado un gráfico, es posible exportarlo en diversos formatos:</p>
+<ul>
+<li>Imagen tipo bitmap (<code>jpeg</code>,<code>png</code>,<code>bmp</code>,<code>tiff</code>,…)</li>
+<li>Imagen vectorial (<code>pdf</code>,<code>svg</code>,…)</li>
+</ul>
+<p>La función <code>ggsave</code> guarda en un fichero el último gráfico generado con <code>ggplot2</code>. Lo hace, además, en el formato indicado en el nombre del fichero que se quiere generar. Así,</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(obesidad,<span class="kw">aes</span>(<span class="dt">x=</span>renta,<span class="dt">y=</span>imc,<span class="dt">color=</span>region))<span class="op">+</span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;lm&quot;</span>)
+<span class="kw">ggsave</span>(<span class="st">&quot;obesidad.pdf&quot;</span>)
+<span class="co">#ggsave(&quot;mortalidad.pdf&quot;, width = 20, height = 20, units = &quot;cm&quot;)</span>
+<span class="kw">ggsave</span>(<span class="st">&quot;obesidad.png&quot;</span>)</code></pre>
+<p>Si no se especifica ruta, las imágenes serán guardadas en el directorio de trabajo.</p>
+<div class="nota">
+<p>
+Las imágenes vectoriales tienen una resolución “infinita” y suelen ocupar poca memoria. Sin embargo, no todos los editores de texto admiten este tipo de formato.
+</p>
+</div>
+
+</div>
+</div>
+</div>
+<div id="mapas" class="section level2">
+<h2><span class="header-section-number">2.2</span> Mapas</h2>
+<ul>
+<li><p>Con <code>ggplot2</code> se puede también construir representaciones gráficas con información geográfica (puntos, segmentos, etc.): basta con que las estéticas <code>x</code> e <code>y</code> se correspondan con la longitud y la latitud de los datos.</p></li>
+<li><p>Lo que permite hacer <code>ggmap</code> es, en esencia, añadir a los gráficos ya conocidos una capa cartográfica adicional. Para eso usa recursos disponibles en la <em>web</em> a través de APIs (de Google y otros).</p></li>
+</ul>
+<p>Un ejemplo sencillo ilustra los usos de <code>ggmap</code>. En primer lugar, se carga (si se ha instalado previamente) el paquete:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggmap)</code></pre>
+<p>Existen varios proveedores que proporcionan APIs de geolocalización. Uno de ellos es Google: dado el nombre más o menos normalizado de un lugar, la API de Google devuelve sus coordenadas. Este servicio tiene una versión gratuita que permite realizar un determinado número de consultas diarias (2500 actualmente); para usos más intensivos, es necesario adquirir una licencia.</p>
+<p>La función <code>geocode</code> encapsula la consulta a dicha API y devuelve un objeto (un <code>data.frame</code>) que contiene las coordenadas del lugar de interés:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#ens &lt;- geocode(&#39;Calle Monforte de Lemos 5, madrid&#39;) #ya no funciona!</span>
+ens&lt;-<span class="kw">c</span>(<span class="dt">lat=</span> <span class="fl">40.47767</span>,<span class="dt">lon=</span><span class="op">-</span><span class="fl">3.691096</span>)
+<span class="co">### Una alternativa gratuita sin limites para direcciones en España </span>
+<span class="co">#require(caRtociudad)</span>
+<span class="co">#ens &lt;- cartociudad_geocode(&#39;Calle Monforte de Lemos 5, madrid&#39;)</span>
+<span class="co">### Otra alternativa OSM</span>
+<span class="co">#require(tmaptools)</span>
+<span class="co">#ens=as.numeric(geocode_OSM(&#39;Monforte de Lemos 5, madrid&#39;)$coords)</span></code></pre>
+<p>La función <code>get_map</code> consulta otro servicio de información cartográfica (GoogleMaps en el ejemplo siguiente) y descarga un mapa (que es, esencialmente, una imagen <em>raster</em>).</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(caRtociudad)
+mapa=<span class="kw">get_cartociudad_map</span>(ens,<span class="dt">radius=</span><span class="dv">2</span>)
+<span class="co">#ens&lt;-c(left=-3.7,bottom=40.47,right=-3.68,top=40.485)</span>
+<span class="co">#mapa &lt;- get_stamenmap(ens,zoom = 16,maptype=&quot;toner-lite&quot;)</span></code></pre>
+<p>Es obvio que para poder invocar las dos funciones anteriores hace falta una conexión a Internet. Sin embargo, el resto de las operaciones que se van a realizar se ejecutan localmente. Se puede, por ejemplo, representar el mapa directamente (con la función <code>ggmap</code>):</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggmap</span>(mapa)</code></pre>
+<p>O bien se puede marcar sobre él puntos de interés:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(data.table)
+<span class="co"># localización de los bares con terrazas de Madrid</span>
+<span class="co"># https://www.datanalytics.com/2017/03/02/todas-las-terrazas-de-madrid/</span>
+terrazas=<span class="kw">fread</span>(<span class="st">&quot;data/terrazas.csv&quot;</span>) 
+
+<span class="kw">ggmap</span>(mapa) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> lon, <span class="dt">y =</span> lat), <span class="dt">data =</span> terrazas, <span class="dt">colour =</span> <span class="st">&#39;red3&#39;</span>,<span class="dt">size =</span> <span class="dv">3</span>,<span class="dt">alpha=</span>.<span class="dv">5</span>)</code></pre>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-56-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Como puede apreciarse, la sintaxis es similar a la de <code>ggplot2</code>. Una diferencia notables es que, ahora, los datos se pasan en la capa, es decir, en este caso, en la función <code>geom_point</code>.</p>
+<div id="mas-ejemplos-de-mapas-con-puntos" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Más ejemplos de mapas con puntos</h3>
+<p>En los ejemplos que siguen se va a utilizar el conjunto de datos <code>crimes</code> que forma parte del paquete <code>ggmap</code> y que incluye información geolocalizada de crímenes cometidos en la ciudad de Houston. En realidad, solo consideraremos los crímenes <em>serios</em>, es decir,</p>
+<pre class="sourceCode r"><code class="sourceCode r">crimes.houston &lt;-<span class="st"> </span><span class="kw">subset</span>(crime,<span class="op">!</span>crime<span class="op">$</span>offense <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;auto theft&quot;</span>, <span class="st">&quot;theft&quot;</span>, <span class="st">&quot;burglary&quot;</span>))</code></pre>
+<p>El tipo de mapas más simples son los que se limitan a representar puntos sobre una capa cartográfica.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#houston&lt;-geocode(&#39;houston&#39;,source = &quot;dsk&quot;)</span>
+houston=<span class="kw">c</span>(<span class="dt">left =</span> <span class="fl">-95.4</span>, <span class="dt">bottom =</span> <span class="fl">29.74</span>, <span class="dt">right =</span> <span class="fl">-95.35</span>, <span class="dt">top =</span> <span class="fl">29.78</span>)
+HoustonMap &lt;-<span class="st"> </span><span class="kw">ggmap</span>(<span class="kw">get_stamenmap</span>(houston,<span class="dt">zoom=</span><span class="dv">14</span>,<span class="dt">maptype=</span><span class="st">&quot;toner-lite&quot;</span>))
+HoustonMap <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> lon, <span class="dt">y =</span> lat, <span class="dt">colour =</span> offense), <span class="dt">data =</span> crimes.houston, <span class="dt">size =</span> <span class="dv">1</span>)</code></pre>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-57-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="ej">
+<p>
+Los mecanismos conocidos de <code>ggplot2</code>, como las facetas, están disponibles en <code>ggmap</code>. Descomponer el anterior gráfico utilizando <code>facet_wrap</code> por tipo de crimen (ver gráfico siguiente). Hacer lo mismo con el día de la semana.
+</p>
+</div>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-59-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="ej">
+<p>
+Pintar las gasolineras en el mapa de España (o de una provincia o un municipio) utilizando el fichero <code>data/carburantes.csv</code>. Modificar el tamaño (o color) de los puntos en función de, por ejemplo, el precio de los carburantes.
+</p>
+</div>
+</div>
+<div id="mas-alla-de-los-puntos-densidades-y-poligonos" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Más allá de los puntos: densidades y poligonos</h3>
+<p>Además de <code>geom_point</code>, también están disponibles otros tipos de capas de <code>ggplot2</code>, como <code>stat_bin2d</code>, que cuenta el número de eventos (aquí atracos) que suceden en regiones cuadradas de un tamaño predefinido. Se puede también utilizar <code>stat_density2d</code>, que representa densidades, para identificar las zonas de mayor criminalidad.</p>
+<pre class="sourceCode r"><code class="sourceCode r">HoustonMap <span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_density2d</span>(<span class="kw">aes</span>(<span class="dt">x =</span> lon, <span class="dt">y =</span> lat, <span class="dt">alpha =</span> ..level..),<span class="dt">fill=</span><span class="st">&quot;red4&quot;</span>,
+                 <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">data =</span> <span class="kw">subset</span>(crimes.houston,offense<span class="op">==</span><span class="st">&quot;robbery&quot;</span>),
+                 <span class="dt">geom =</span> <span class="st">&quot;polygon&quot;</span>)</code></pre>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-62-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Por otra parte, la información estadística puede ser proporcionada de manera agregada en unidades espaciales (a nivel provincial, municipal, …), como para los datos del paro.</p>
+<p>Lo primero que se necesita para representar estar datos, es el conjunto de polígonos (o “shape”) que definen las secciones geográficas. Esta información se puede por ejemplo descargar desde el servidor <code>GADM</code>mediante el paquete <code>raster</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(raster)  
+shape &lt;-<span class="st"> </span><span class="kw">getData</span>(<span class="st">&quot;GADM&quot;</span>, <span class="dt">country=</span> <span class="st">&quot;Spain&quot;</span>, <span class="dt">level =</span> <span class="dv">2</span>) <span class="co">#mapa administrativo a nivel provincial</span>
+peninsula &lt;-<span class="st"> </span><span class="kw">subset</span>(shape,<span class="op">!</span>NAME_<span class="dv">1</span><span class="op">==</span><span class="st">&quot;Islas Canarias&quot;</span>) <span class="co">#mapa sin las islas canarias</span>
+peninsula </code></pre>
+<pre><code>## class       : SpatialPolygonsDataFrame 
+## features    : 50 
+## extent      : -9.301806, 4.328195, 35.17058, 43.79153  (xmin, xmax, ymin, ymax)
+## crs         : +proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0 
+## variables   : 13
+## names       : GID_0, NAME_0,   GID_1,           NAME_1, NL_NAME_1,     GID_2,   NAME_2, VARNAME_2, NL_NAME_2,          TYPE_2,       ENGTYPE_2, CC_2,   HASC_2 
+## min values  :   ESP,  Spain, ESP.1_1,        Andalucía,        NA, ESP.1.1_1, A Coruña,   Alacant,        NA, Ciudad Autónoma, Autonomous City,   01, ES.AN.AM 
+## max values  :   ESP,  Spain, ESP.9_1, Región de Murcia,        NA, ESP.9.1_1, Zaragoza,  València,        NA,       Provincia,        Province,   52, ES.VC.VN</code></pre>
+<p>Se puede representar este mapa mediante el comando <code>plot</code></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(peninsula,<span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>)
+<span class="kw">text</span>(<span class="kw">coordinates</span>(peninsula), <span class="dt">labels=</span>peninsula<span class="op">$</span>NAME_<span class="dv">2</span>,<span class="dt">cex=</span>.<span class="dv">5</span>)</code></pre>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-64-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>o utilizando el paquete <code>ggplot2</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#gpclibPermit()</span>
+peninsula.df=<span class="kw">fortify</span>(peninsula,<span class="dt">region=</span><span class="st">&quot;CC_2&quot;</span>) <span class="co">#convierte el shape en data.frames</span>
+<span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_polygon</span>(<span class="dt">data =</span> peninsula.df, <span class="kw">aes</span>(long, lat, <span class="dt">group =</span> group), 
+                        <span class="dt">fill=</span><span class="st">&quot;grey60&quot;</span>,<span class="dt">colour =</span> <span class="st">&quot;grey80&quot;</span>, <span class="dt">size =</span> <span class="fl">.1</span>)<span class="op">+</span><span class="kw">coord_quickmap</span>()</code></pre>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-65-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Ahora pintamos en el mapa los datos del paro (Mujeres, 2011, primer trimestre):</p>
+<pre class="sourceCode r"><code class="sourceCode r">paro=<span class="kw">fread</span>(<span class="st">&quot;data/paro.csv&quot;</span>,<span class="dt">encoding=</span><span class="st">&quot;UTF-8&quot;</span>)
+paro[,id<span class="op">:</span><span class="er">=</span><span class="kw">sub</span>(<span class="st">&quot; &quot;</span>,<span class="st">&quot;0&quot;</span>,<span class="kw">format</span>(Prov.id,<span class="dt">width=</span><span class="dv">2</span>))]
+Paro &lt;-<span class="st"> </span><span class="kw">subset</span>(paro,Año<span class="op">==</span><span class="dv">2011</span> <span class="op">&amp;</span><span class="st"> </span>Trimestre<span class="op">==</span><span class="st">&quot;I&quot;</span>)
+
+peninsula.paro=<span class="kw">merge</span>(peninsula.df,Paro,<span class="dt">by=</span><span class="st">&quot;id&quot;</span>) <span class="co">#juntamos las dos bases</span>
+
+<span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_polygon</span>(<span class="dt">data =</span> peninsula.paro, <span class="kw">aes</span>(long, lat, <span class="dt">group =</span> group,<span class="dt">fill=</span>Tasa.paro), <span class="dt">colour =</span> <span class="st">&quot;grey80&quot;</span>, <span class="dt">size =</span> <span class="fl">.1</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">facet_grid</span>(<span class="op">~</span><span class="st"> </span>Sexo) <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_gradient</span>(<span class="dt">low=</span><span class="st">&quot;aliceblue&quot;</span>,<span class="dt">high=</span><span class="st">&quot;steelblue4&quot;</span>)<span class="op">+</span><span class="kw">coord_quickmap</span>()</code></pre>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-66-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p>Podemos incluso dibujar este mapa, sobre un lienzo obtenido mediante <code>get_map</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r">bb=<span class="kw">bbox</span>(peninsula)
+españa &lt;-<span class="st"> </span><span class="kw">get_stamenmap</span>(<span class="kw">c</span>(bb),<span class="dt">zoom=</span><span class="dv">6</span>,<span class="dt">maptype=</span><span class="st">&quot;toner-lite&quot;</span>)
+
+mujeres=<span class="kw">subset</span>(peninsula.paro,Sexo<span class="op">==</span><span class="st">&quot;Mujeres&quot;</span>)
+
+<span class="kw">ggmap</span>(españa) <span class="op">+</span><span class="st"> </span><span class="kw">geom_polygon</span>(<span class="dt">data =</span> mujeres, <span class="kw">aes</span>(long, lat, <span class="dt">group =</span> group,<span class="dt">fill=</span>Tasa.paro),<span class="dt">alpha=</span>.<span class="dv">5</span>) <span class="op">+</span>
+<span class="kw">scale_fill_gradient</span>(<span class="dt">low=</span><span class="st">&quot;aliceblue&quot;</span>,<span class="dt">high=</span><span class="st">&quot;steelblue4&quot;</span>)</code></pre>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-67-1.png" width="960" style="display: block; margin: auto;" /></p>
+
+</div>
+</div>
+<div id="arboles-filogeneticos" class="section level2">
+<h2><span class="header-section-number">2.3</span> Árboles filogenéticos</h2>
+<div id="importacion-de-un-arbol" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> Importación de un árbol</h3>
+<ul>
+<li>Un árbol filogenético es un esquema arborescente que muestra las relaciones evolutivas entre varias especies u otras entidades que se cree que tienen una ascendencia común"" (Wikipedia).</li>
+</ul>
+<div class="figure">
+<img src="imagenes/Tree_of_life_int.svg.png" alt="El árbol de la vida" />
+<p class="caption">El árbol de la vida</p>
+</div>
+<ul>
+<li><p>El método de construcción de árboles filogenéticos consiste en analizar rasgos heredables (secuencias de ADN) o caracteres morfológicos con el fin de establecer relaciones de parentesco entre especies (o taxones). Casi todos los métodos filogenéticos comienzan con una matriz de distancia en la cual las diferencias entre taxones se estiman sumando discrepancias en nucleótidos o caracteres morfológicos cuantitativos. Cada nodo del árbol representa el ancestro común.</p></li>
+<li><p>Sin embargo, aquí no entraremos en la construcción de los arboles, sino simplemente en su representación gráfica. Suponemos pues que ya disponemos de un árbol filogenético. El paquete <code>treeio</code> sirve como interfaz para importar varios arboles en varios formatos (Newick, Nexus, NHX, jplace, ….).</p></li>
+</ul>
+<p>EL siguiente comando permite instalar el paquete <code>ggtree</code>y sus dependencias (incluye el paquete <code>treeio</code>) desde el repositorio de <code>Bioconductor</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;BiocManager&quot;</span>, <span class="dt">quietly =</span> <span class="ot">TRUE</span>))
+    <span class="kw">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)
+
+BiocManager<span class="op">::</span><span class="kw">install</span>(<span class="st">&quot;ggtree&quot;</span>)</code></pre>
+<p>A continuación importamos un árbol sobre filogenia de primates:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(gglot2)
+<span class="kw">require</span>(ggtree)
+url=<span class="st">&quot;https://raw.githubusercontent.com/rgriff23/Dissertation/master/Chapter_2/data/tree.nex&quot;</span>
+arbol &lt;-<span class="st"> </span><span class="kw">read.nexus</span>(url)
+<span class="kw">summary</span>(arbol)</code></pre>
+<pre><code>## 
+## Phylogenetic tree: arbol 
+## 
+##   Number of tips: 65 
+##   Number of nodes: 64 
+##   Branch lengths:
+##     mean: 10.01834 
+##     variance: 67.22004 
+##     distribution summary:
+##      Min.   1st Qu.    Median   3rd Qu.      Max. 
+##  0.401789  4.710731  8.266731 14.271122 51.124065 
+##   No root edge.
+##   First ten tip labels: Allenopithecus_nigroviridis 
+##                         Cercopithecus_mitis
+##                         Cercopithecus_petaurista
+##                         Chlorocebus_sabaeus
+##                         Erythrocebus_patas
+##                         Miopithecus_ogouensis
+##                         Avahi_laniger
+##                         Cheirogaleus_major
+##                         Daubentonia_madagascarensis
+##                         Eulemur_fulvus
+##   No node labels.</code></pre>
+</div>
+<div id="representacion-basica" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> Representación básica</h3>
+<p>Vamos ahora a Explorar la estructura del árbol mediante el comando <code>ggtree</code></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggtree</span>(arbol)</code></pre>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-70-1.png" width="672" /></p>
+<p>Para poder añadir las etiquetas de los nodos finales utilizamos el comando <code>geom_tiplab</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggtree</span>(arbol)<span class="op">+</span><span class="kw">geom_tiplab</span>(<span class="dt">size=</span><span class="dv">2</span>,<span class="dt">offset=</span>.<span class="dv">5</span>)<span class="op">+</span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">100</span>)</code></pre>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-71-1.png" width="672" /></p>
+<p>Además de la representación rectangular, otros sistemas de coordenadas (circular, radial, …) son disponibles utilizando la opción <code>layout</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(ggplot2)
+pa &lt;-<span class="kw">ggtree</span>(arbol) <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;rectangular&quot;</span>)
+pa.bis &lt;-<span class="st"> </span><span class="kw">ggtree</span>(arbol) <span class="op">+</span><span class="st"> </span><span class="kw">coord_flip</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;rectangular invertido&quot;</span>)
+pb &lt;-<span class="st"> </span><span class="kw">ggtree</span>(arbol, <span class="dt">layout=</span><span class="st">&quot;slanted&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;slanted&quot;</span>)
+pc &lt;-<span class="st"> </span><span class="kw">ggtree</span>(arbol, <span class="dt">layout=</span><span class="st">&quot;circular&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;circular&quot;</span>)
+pd &lt;-<span class="st"> </span><span class="kw">ggtree</span>(arbol, <span class="dt">layout=</span><span class="st">&quot;radial&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;radial&quot;</span>)
+pe &lt;-<span class="st"> </span><span class="kw">ggtree</span>(arbol, <span class="dt">layout=</span><span class="st">&quot;unrooted&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;unrooted&quot;</span>)
+<span class="kw">multiplot</span>(pa, pa.bis, pb, pc, pd, pe, <span class="dt">ncol=</span><span class="dv">3</span>)</code></pre>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-72-1.png" width="672" /></p>
+</div>
+<div id="agrupacion-de-nodos" class="section level3">
+<h3><span class="header-section-number">2.3.3</span> Agrupación de nodos</h3>
+<p>La función <code>groupClade</code> permite agrupar nodos que comparten un mismo ancestro. A continuación agrupamos los nodos por familia de primates:
+- Galagoidea (124)
+- Lemuroidea (113)
+- Tarsioidea (110)
+- Ceboidea (96)
+- Hominoidea (89)
+- Cercopithecoidea (70)</p>
+<pre class="sourceCode r"><code class="sourceCode r">nodos=<span class="kw">c</span>(<span class="dv">124</span>, <span class="dv">113</span>, <span class="dv">110</span>, <span class="dv">96</span>, <span class="dv">89</span>, <span class="dv">70</span>)
+arbol&lt;-<span class="kw">groupClade</span>(arbol,<span class="dt">.node=</span>nodos) <span class="co">#agrupación por especie</span>
+familias=<span class="kw">c</span>(<span class="st">&quot;galagoids&quot;</span>,<span class="st">&quot;lemurs&quot;</span>,<span class="st">&quot;tarsiers&quot;</span>,<span class="st">&quot;cebids&quot;</span>,<span class="st">&quot;hominoids&quot;</span>,<span class="st">&quot;cercopithecoids&quot;</span>)
+<span class="kw">ggtree</span>(arbol, <span class="kw">aes</span>(<span class="dt">color=</span>group), <span class="dt">layout=</span><span class="st">&#39;circular&#39;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_tiplab</span>(<span class="dt">size=</span><span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">angle=</span>angle))</code></pre>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r">code=<span class="st">&quot;ggtree(arbol, aes(color=group)) + geom_tiplab(size=2)&quot;</span>
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>){
+  mas=<span class="kw">paste0</span>(<span class="st">&quot;geom_cladelabel(&quot;</span>,nodos[i],<span class="st">&quot;,&#39;&quot;</span>,familias[i],<span class="st">&quot;&#39;,offset=25, barsize=2,offset.text=2.5, fontsize=2, hjust=.2)&quot;</span>)
+  code=<span class="kw">paste</span>(code,mas,<span class="dt">sep=</span><span class="st">&quot;+&quot;</span>)
+  }
+<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text=</span>code))</code></pre>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">##### Explorar la estructura de los siguientes arboles</span>
+arbol&lt;-<span class="kw">read.tree</span>(<span class="st">&quot;http://www.phytools.org/eqg2015/data/anole.tre&quot;</span>) <span class="co">#filogenia de lagartijas</span>
+arbol &lt;-<span class="st"> </span><span class="kw">read.nexus</span>(<span class="st">&quot;https://raw.githubusercontent.com/rgriff23/Dissertation/master/Chapter_2/data/tree.nex&quot;</span>) <span class="co">#filogenia de primates</span></code></pre>
+</div>
+<div id="anadir-heatmap" class="section level3">
+<h3><span class="header-section-number">2.3.4</span> Añadir Heatmap</h3>
+<p>Simulamos cinco caracteres continuos (ejemplo: tamaño del cuerpo, …) de acuerdo al árbol filogenia:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(phytools)
+<span class="kw">set.seed</span>(<span class="dv">1234</span>) <span class="co"># simulacion reproducible</span>
+traits &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">fastBM</span>(arbol, <span class="dt">nsim=</span><span class="dv">5</span>))</code></pre>
+<p>utilizando las función <code>gheatmap</code> para adjuntar un <em>heatmap</em> a la representación del árbol:</p>
+<pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">ggtree</span>(arbol) <span class="op">+</span><span class="st"> </span><span class="kw">xlim</span>(<span class="dv">0</span>, <span class="dv">100</span>) <span class="op">+</span><span class="st"> </span><span class="kw">geom_tiplab</span>(<span class="dt">size=</span><span class="dv">2</span>, <span class="dt">offset=</span><span class="dv">17</span>) 
+
+<span class="co"># añade el heatmap</span>
+<span class="kw">gheatmap</span>(p, traits, <span class="dt">offset=</span><span class="fl">0.2</span>, <span class="dt">width=</span><span class="fl">0.2</span>, <span class="dt">low=</span><span class="st">&quot;darkgreen&quot;</span>, <span class="dt">high=</span><span class="st">&quot;darkred&quot;</span>, <span class="dt">colnames_position =</span> <span class="st">&quot;top&quot;</span>, <span class="dt">font.size=</span><span class="dv">2</span>)</code></pre>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-77-1.png" width="672" /></p>
+</div>
+<div id="visualizacion-de-multiple-arboles" class="section level3">
+<h3><span class="header-section-number">2.3.5</span> Visualización de multiple arboles</h3>
+<pre class="sourceCode r"><code class="sourceCode r">trees &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">40</span>), rtree)
+<span class="kw">class</span>(trees) &lt;-<span class="st"> &quot;multiPhylo&quot;</span>
+<span class="kw">ggtree</span>(trees) <span class="op">+</span><span class="st"> </span><span class="kw">facet_wrap</span>(<span class="op">~</span>.id, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">geom_tiplab</span>(<span class="dt">size=</span><span class="dv">2</span>) </code></pre>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-78-1.png" width="672" /></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="graficos-basicos-en-el-analisis-de-datos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="rmarkdown-y-shiny.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["graficosConR.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
