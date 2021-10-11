@@ -1,4 +1,4 @@
-tab:unnamed-chunk-89
+tab:unnamed-chunk-92
 gráficos-básicos-en-el-análisis-de-datos
 distribución-de-una-variable
 histograma
