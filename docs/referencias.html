@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4 Referencias | Gráficos con R</title>
   <meta name="description" content="4 Referencias | Gráficos con R" />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4 Referencias | Gráficos con R" />
   <meta property="og:type" content="book" />
@@ -24,22 +24,25 @@
 <meta name="author" content="Olivier Nuñez" />
 
 
-<meta name="date" content="2019-09-23" />
+<meta name="date" content="2021-10-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="rmarkdown-y-shiny.html">
+<link rel="prev" href="rmarkdown.html"/>
 
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -47,29 +50,33 @@
 
 
 
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -81,9 +88,9 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-le
 div.sourceCode
   { color: #1f1c1b; background-color: #ffffff; }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span. { color: #1f1c1b; } /* Normal */
+code span { color: #1f1c1b; } /* Normal */
 code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
 code span.an { color: #ca60ca; } /* Annotation */
 code span.at { color: #0057ae; } /* Attribute */
@@ -116,6 +123,7 @@ code span.vs { color: #bf0303; } /* VerbatimString */
 code span.wa { color: #bf0303; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -130,45 +138,59 @@ code span.wa { color: #bf0303; } /* Warning */
 
 <ul class="summary">
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preámbulo</a></li>
-<li class="chapter" data-level="1" data-path="graficos-basicos-en-el-analisis-de-datos.html"><a href="graficos-basicos-en-el-analisis-de-datos.html"><i class="fa fa-check"></i><b>1</b> Gráficos básicos en el análisis de datos</a><ul>
-<li class="chapter" data-level="1.1" data-path="graficos-basicos-en-el-analisis-de-datos.html"><a href="graficos-basicos-en-el-analisis-de-datos.html#distribucion-de-una-variable"><i class="fa fa-check"></i><b>1.1</b> Distribución de una variable</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="graficos-basicos-en-el-analisis-de-datos.html"><a href="graficos-basicos-en-el-analisis-de-datos.html#histograma"><i class="fa fa-check"></i><b>1.1.1</b> Histograma</a></li>
-<li class="chapter" data-level="1.1.2" data-path="graficos-basicos-en-el-analisis-de-datos.html"><a href="graficos-basicos-en-el-analisis-de-datos.html#diagrama-de-caja-boxplot"><i class="fa fa-check"></i><b>1.1.2</b> Diagrama de caja (boxplot)</a></li>
-<li class="chapter" data-level="1.1.3" data-path="graficos-basicos-en-el-analisis-de-datos.html"><a href="graficos-basicos-en-el-analisis-de-datos.html#diagrama-de-barras"><i class="fa fa-check"></i><b>1.1.3</b> Diagrama de barras</a></li>
+<li class="chapter" data-level="1" data-path="gráficos-básicos-en-el-análisis-de-datos.html"><a href="gráficos-básicos-en-el-análisis-de-datos.html"><i class="fa fa-check"></i><b>1</b> Gráficos básicos en el análisis de datos</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="gráficos-básicos-en-el-análisis-de-datos.html"><a href="gráficos-básicos-en-el-análisis-de-datos.html#distribución-de-una-variable"><i class="fa fa-check"></i><b>1.1</b> Distribución de una variable</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="gráficos-básicos-en-el-análisis-de-datos.html"><a href="gráficos-básicos-en-el-análisis-de-datos.html#histograma"><i class="fa fa-check"></i><b>1.1.1</b> Histograma</a></li>
+<li class="chapter" data-level="1.1.2" data-path="gráficos-básicos-en-el-análisis-de-datos.html"><a href="gráficos-básicos-en-el-análisis-de-datos.html#diagrama-de-caja-boxplot"><i class="fa fa-check"></i><b>1.1.2</b> Diagrama de caja (boxplot)</a></li>
+<li class="chapter" data-level="1.1.3" data-path="gráficos-básicos-en-el-análisis-de-datos.html"><a href="gráficos-básicos-en-el-análisis-de-datos.html#diagrama-de-barras"><i class="fa fa-check"></i><b>1.1.3</b> Diagrama de barras</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="graficos-basicos-en-el-analisis-de-datos.html"><a href="graficos-basicos-en-el-analisis-de-datos.html#relacion-entre-dos-variables"><i class="fa fa-check"></i><b>1.2</b> Relación entre dos variables</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="graficos-basicos-en-el-analisis-de-datos.html"><a href="graficos-basicos-en-el-analisis-de-datos.html#diagrama-de-dispersion"><i class="fa fa-check"></i><b>1.2.1</b> Diagrama de dispersión</a></li>
-<li class="chapter" data-level="1.2.2" data-path="graficos-basicos-en-el-analisis-de-datos.html"><a href="graficos-basicos-en-el-analisis-de-datos.html#dotchart"><i class="fa fa-check"></i><b>1.2.2</b> Dotchart</a></li>
-<li class="chapter" data-level="1.2.3" data-path="graficos-basicos-en-el-analisis-de-datos.html"><a href="graficos-basicos-en-el-analisis-de-datos.html#relacion-con-una-variable-temporal"><i class="fa fa-check"></i><b>1.2.3</b> Relación con una variable temporal</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html"><i class="fa fa-check"></i><b>2</b> Gráficos avanzados</a><ul>
-<li class="chapter" data-level="2.1" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#elementos-de-un-grafico"><i class="fa fa-check"></i><b>2.1</b> Elementos de un gráfico</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#datos"><i class="fa fa-check"></i><b>2.1.1</b> Datos</a></li>
-<li class="chapter" data-level="2.1.2" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#esteticas-aes"><i class="fa fa-check"></i><b>2.1.2</b> Estéticas (<code>aes</code>)</a></li>
-<li class="chapter" data-level="2.1.3" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#capas-geoms"><i class="fa fa-check"></i><b>2.1.3</b> Capas (<code>geoms</code>)</a></li>
-<li class="chapter" data-level="2.1.4" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#facetas"><i class="fa fa-check"></i><b>2.1.4</b> Facetas</a></li>
-<li class="chapter" data-level="2.1.5" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#toque-final"><i class="fa fa-check"></i><b>2.1.5</b> Toque final</a></li>
-</ul></li>
-<li class="chapter" data-level="2.2" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#mapas"><i class="fa fa-check"></i><b>2.2</b> Mapas</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#mas-ejemplos-de-mapas-con-puntos"><i class="fa fa-check"></i><b>2.2.1</b> Más ejemplos de mapas con puntos</a></li>
-<li class="chapter" data-level="2.2.2" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#mas-alla-de-los-puntos-densidades-y-poligonos"><i class="fa fa-check"></i><b>2.2.2</b> Más allá de los puntos: densidades y poligonos</a></li>
-</ul></li>
-<li class="chapter" data-level="2.3" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#arboles-filogeneticos"><i class="fa fa-check"></i><b>2.3</b> Árboles filogenéticos</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#importacion-de-un-arbol"><i class="fa fa-check"></i><b>2.3.1</b> Importación de un árbol</a></li>
-<li class="chapter" data-level="2.3.2" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#representacion-basica"><i class="fa fa-check"></i><b>2.3.2</b> Representación básica</a></li>
-<li class="chapter" data-level="2.3.3" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#agrupacion-de-nodos"><i class="fa fa-check"></i><b>2.3.3</b> Agrupación de nodos</a></li>
-<li class="chapter" data-level="2.3.4" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#anadir-heatmap"><i class="fa fa-check"></i><b>2.3.4</b> Añadir Heatmap</a></li>
-<li class="chapter" data-level="2.3.5" data-path="graficos-avanzados.html"><a href="graficos-avanzados.html#visualizacion-de-multiple-arboles"><i class="fa fa-check"></i><b>2.3.5</b> Visualización de multiple arboles</a></li>
+<li class="chapter" data-level="1.2" data-path="gráficos-básicos-en-el-análisis-de-datos.html"><a href="gráficos-básicos-en-el-análisis-de-datos.html#relación-entre-dos-variables"><i class="fa fa-check"></i><b>1.2</b> Relación entre dos variables</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="gráficos-básicos-en-el-análisis-de-datos.html"><a href="gráficos-básicos-en-el-análisis-de-datos.html#diagrama-de-dispersión"><i class="fa fa-check"></i><b>1.2.1</b> Diagrama de dispersión</a></li>
+<li class="chapter" data-level="1.2.2" data-path="gráficos-básicos-en-el-análisis-de-datos.html"><a href="gráficos-básicos-en-el-análisis-de-datos.html#dotchart"><i class="fa fa-check"></i><b>1.2.2</b> Dotchart</a></li>
+<li class="chapter" data-level="1.2.3" data-path="gráficos-básicos-en-el-análisis-de-datos.html"><a href="gráficos-básicos-en-el-análisis-de-datos.html#relación-con-una-variable-temporal"><i class="fa fa-check"></i><b>1.2.3</b> Relación con una variable temporal</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="rmarkdown-y-shiny.html"><a href="rmarkdown-y-shiny.html"><i class="fa fa-check"></i><b>3</b> Rmarkdown y shiny</a><ul>
-<li class="chapter" data-level="3.1" data-path="rmarkdown-y-shiny.html"><a href="rmarkdown-y-shiny.html#rmarkdown"><i class="fa fa-check"></i><b>3.1</b> Rmarkdown</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="rmarkdown-y-shiny.html"><a href="rmarkdown-y-shiny.html#rmarkdown-en-15-mn"><i class="fa fa-check"></i><b>3.1.1</b> Rmarkdown en 15 mn</a></li>
-<li class="chapter" data-level="3.1.2" data-path="rmarkdown-y-shiny.html"><a href="rmarkdown-y-shiny.html#elementos-de-un-documento-rmarkdown"><i class="fa fa-check"></i><b>3.1.2</b> Elementos de un documento Rmarkdown</a></li>
-<li class="chapter" data-level="3.1.3" data-path="rmarkdown-y-shiny.html"><a href="rmarkdown-y-shiny.html#tablas-con-rmarkdown"><i class="fa fa-check"></i><b>3.1.3</b> Tablas con Rmarkdown</a></li>
+<li class="chapter" data-level="2" data-path="gráficos-avanzados.html"><a href="gráficos-avanzados.html"><i class="fa fa-check"></i><b>2</b> Gráficos avanzados</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="gráficos-avanzados.html"><a href="gráficos-avanzados.html#elementos-de-un-gráfico"><i class="fa fa-check"></i><b>2.1</b> Elementos de un gráfico</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="gráficos-avanzados.html"><a href="gráficos-avanzados.html#datos"><i class="fa fa-check"></i><b>2.1.1</b> Datos</a></li>
+<li class="chapter" data-level="2.1.2" data-path="gráficos-avanzados.html"><a href="gráficos-avanzados.html#estéticas-aes"><i class="fa fa-check"></i><b>2.1.2</b> Estéticas (<code>aes</code>)</a></li>
+<li class="chapter" data-level="2.1.3" data-path="gráficos-avanzados.html"><a href="gráficos-avanzados.html#capas-geoms"><i class="fa fa-check"></i><b>2.1.3</b> Capas (<code>geoms</code>)</a></li>
+<li class="chapter" data-level="2.1.4" data-path="gráficos-avanzados.html"><a href="gráficos-avanzados.html#facetas"><i class="fa fa-check"></i><b>2.1.4</b> Facetas</a></li>
+<li class="chapter" data-level="2.1.5" data-path="gráficos-avanzados.html"><a href="gráficos-avanzados.html#toque-final"><i class="fa fa-check"></i><b>2.1.5</b> Toque final</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="rmarkdown-y-shiny.html"><a href="rmarkdown-y-shiny.html#shiny"><i class="fa fa-check"></i><b>3.2</b> Shiny</a></li>
+<li class="chapter" data-level="2.2" data-path="gráficos-avanzados.html"><a href="gráficos-avanzados.html#mapas"><i class="fa fa-check"></i><b>2.2</b> Mapas</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="gráficos-avanzados.html"><a href="gráficos-avanzados.html#más-ejemplos-de-mapas-con-puntos"><i class="fa fa-check"></i><b>2.2.1</b> Más ejemplos de mapas con puntos</a></li>
+<li class="chapter" data-level="2.2.2" data-path="gráficos-avanzados.html"><a href="gráficos-avanzados.html#más-allá-de-los-puntos-densidades-y-poligonos"><i class="fa fa-check"></i><b>2.2.2</b> Más allá de los puntos: densidades y poligonos</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="gráficos-avanzados.html"><a href="gráficos-avanzados.html#árboles-filogenéticos"><i class="fa fa-check"></i><b>2.3</b> Árboles filogenéticos</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="gráficos-avanzados.html"><a href="gráficos-avanzados.html#importación-de-un-árbol"><i class="fa fa-check"></i><b>2.3.1</b> Importación de un árbol</a></li>
+<li class="chapter" data-level="2.3.2" data-path="gráficos-avanzados.html"><a href="gráficos-avanzados.html#representación-básica"><i class="fa fa-check"></i><b>2.3.2</b> Representación básica</a></li>
+<li class="chapter" data-level="2.3.3" data-path="gráficos-avanzados.html"><a href="gráficos-avanzados.html#agrupación-de-nodos"><i class="fa fa-check"></i><b>2.3.3</b> Agrupación de nodos</a></li>
+<li class="chapter" data-level="2.3.4" data-path="gráficos-avanzados.html"><a href="gráficos-avanzados.html#añadir-heatmap"><i class="fa fa-check"></i><b>2.3.4</b> Añadir Heatmap</a></li>
+<li class="chapter" data-level="2.3.5" data-path="gráficos-avanzados.html"><a href="gráficos-avanzados.html#visualización-de-multiple-arboles"><i class="fa fa-check"></i><b>2.3.5</b> Visualización de multiple arboles</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>3</b> Rmarkdown</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="rmarkdown.html"><a href="rmarkdown.html#rmarkdown-en-15-mn"><i class="fa fa-check"></i><b>3.1</b> Rmarkdown en 15 mn</a></li>
+<li class="chapter" data-level="3.2" data-path="rmarkdown.html"><a href="rmarkdown.html#elementos-de-un-documento-rmarkdown"><i class="fa fa-check"></i><b>3.2</b> Elementos de un documento Rmarkdown</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#encabezado-préambulo"><i class="fa fa-check"></i><b>3.2.1</b> Encabezado (préambulo)</a></li>
+<li class="chapter" data-level="3.2.2" data-path="rmarkdown.html"><a href="rmarkdown.html#texto-del-documento"><i class="fa fa-check"></i><b>3.2.2</b> Texto del documento</a></li>
+<li class="chapter" data-level="3.2.3" data-path="rmarkdown.html"><a href="rmarkdown.html#bloques-de-codigo"><i class="fa fa-check"></i><b>3.2.3</b> Bloques de codigo</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="rmarkdown.html"><a href="rmarkdown.html#tablas-con-rmarkdown"><i class="fa fa-check"></i><b>3.3</b> Tablas con Rmarkdown</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="rmarkdown.html"><a href="rmarkdown.html#tablas-cruzadas"><i class="fa fa-check"></i><b>3.3.1</b> Tablas cruzadas</a></li>
+<li class="chapter" data-level="3.3.2" data-path="rmarkdown.html"><a href="rmarkdown.html#base-de-datos"><i class="fa fa-check"></i><b>3.3.2</b> Base de datos</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>4</b> Referencias</a></li>
 </ul>
@@ -188,7 +210,7 @@ code span.wa { color: #bf0303; } /* Warning */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="referencias" class="section level1">
+<div id="referencias" class="section level1" number="4">
 <h1><span class="header-section-number">4</span> Referencias</h1>
 <p>Este curso está basado en las siguientes referencias:</p>
 <ul>
@@ -208,17 +230,18 @@ code span.wa { color: #bf0303; } /* Warning */
           </div>
         </div>
       </div>
-<a href="rmarkdown-y-shiny.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="rmarkdown.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -226,12 +249,12 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -246,7 +269,15 @@ gitbook.start({
 "link": null,
 "text": null
 },
+"view": {
+"link": null,
+"text": null
+},
 "download": ["graficosConR.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
@@ -261,8 +292,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
