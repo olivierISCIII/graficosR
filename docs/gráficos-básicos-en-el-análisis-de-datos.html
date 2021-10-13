@@ -24,7 +24,7 @@
 <meta name="author" content="Olivier Nuñez" />
 
 
-<meta name="date" content="2021-10-11" />
+<meta name="date" content="2021-10-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -248,20 +248,19 @@ Otros argumentos relacionados con los ejes y el titulo del gráfico son: <code>m
 <p>Para ilustrar la descripción gráfica de la distribución de una variable numérica, se utiliza la base de datos <code>msleep</code> que contiene información sobre el tiempo de sueño (en horas) de mamíferos:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="gráficos-básicos-en-el-análisis-de-datos.html#cb4-1" aria-hidden="true" tabindex="-1"></a>msleep <span class="co"># ?msleep para más detalles</span></span></code></pre></div>
 <pre><code>## # A tibble: 83 x 11
-##    name      genus  vore  order  conservation sleep_total sleep_rem
-##    &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;
-##  1 Cheetah   Acino~ carni Carni~ lc                  12.1      NA  
-##  2 Owl monk~ Aotus  omni  Prima~ &lt;NA&gt;                17         1.8
-##  3 Mountain~ Aplod~ herbi Roden~ nt                  14.4       2.4
-##  4 Greater ~ Blari~ omni  Soric~ lc                  14.9       2.3
-##  5 Cow       Bos    herbi Artio~ domesticated         4         0.7
-##  6 Three-to~ Brady~ herbi Pilosa &lt;NA&gt;                14.4       2.2
-##  7 Northern~ Callo~ carni Carni~ vu                   8.7       1.4
-##  8 Vesper m~ Calom~ &lt;NA&gt;  Roden~ &lt;NA&gt;                 7        NA  
-##  9 Dog       Canis  carni Carni~ domesticated        10.1       2.9
-## 10 Roe deer  Capre~ herbi Artio~ lc                   3        NA  
-## # ... with 73 more rows, and 4 more variables: sleep_cycle &lt;dbl&gt;,
-## #   awake &lt;dbl&gt;, brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
+##    name                     genus      vore  order       conservation sleep_total sleep_rem sleep_cycle awake  brainwt  bodywt
+##    &lt;chr&gt;                    &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
+##  1 Cheetah                  Acinonyx   carni Carnivora   lc                  12.1      NA        NA      11.9 NA        50    
+##  2 Owl monkey               Aotus      omni  Primates    &lt;NA&gt;                17         1.8      NA       7    0.0155    0.48 
+##  3 Mountain beaver          Aplodontia herbi Rodentia    nt                  14.4       2.4      NA       9.6 NA         1.35 
+##  4 Greater short-tailed sh~ Blarina    omni  Soricomorp~ lc                  14.9       2.3       0.133   9.1  0.00029   0.019
+##  5 Cow                      Bos        herbi Artiodacty~ domesticated         4         0.7       0.667  20    0.423   600    
+##  6 Three-toed sloth         Bradypus   herbi Pilosa      &lt;NA&gt;                14.4       2.2       0.767   9.6 NA         3.85 
+##  7 Northern fur seal        Callorhin~ carni Carnivora   vu                   8.7       1.4       0.383  15.3 NA        20.5  
+##  8 Vesper mouse             Calomys    &lt;NA&gt;  Rodentia    &lt;NA&gt;                 7        NA        NA      17   NA         0.045
+##  9 Dog                      Canis      carni Carnivora   domesticated        10.1       2.9       0.333  13.9  0.07     14    
+## 10 Roe deer                 Capreolus  herbi Artiodacty~ lc                   3        NA        NA      21    0.0982   14.8  
+## # ... with 73 more rows</code></pre>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="gráficos-básicos-en-el-análisis-de-datos.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(msleep$sleep_total) #tiempo total de sueño (en horas)</span></span>
 <span id="cb6-2"><a href="gráficos-básicos-en-el-análisis-de-datos.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">stem</span>(msleep<span class="sc">$</span>sleep_total)</span></code></pre></div>
 <pre><code>## 
@@ -278,17 +277,17 @@ Otros argumentos relacionados con los ejes y el titulo del gráfico son: <code>m
 ##   16 | 604
 ##   18 | 01479</code></pre>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="gráficos-básicos-en-el-análisis-de-datos.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(sleep_total,<span class="at">data=</span>msleep) <span class="co">#histograma </span></span></code></pre></div>
-<p><img src="graficosConR_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>La altura de cada barra en el histograma es proporcional a la frecuencia de datos que caen en el intervalo correspondiente. Por defecto, en la función <code>qplot</code>el número de barras es igual a <code>bins=30</code>. Este valor es muy arbitrario. Otra alternativa consiste en elegir un número <span class="math inline">\(k\)</span> de barras en función del tamaña muestral <span class="math inline">\(n\)</span>, como por ejemplo, el criterio de Sturges (<span class="math inline">\(k=1+\log_2(n)\)</span>) o el criterio de Rule (<span class="math inline">\(k=2n^{1/3}\)</span>). Abajo, un histograma con un número de barras que sigue este ultimo criterio:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="gráficos-básicos-en-el-análisis-de-datos.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(sleep_total,<span class="at">data=</span>msleep,<span class="at">bins=</span><span class="dv">8</span>,<span class="at">color=</span><span class="fu">I</span>(<span class="st">&quot;grey70&quot;</span>),<span class="at">fill=</span><span class="fu">I</span>(<span class="st">&quot;lightblue&quot;</span>))</span></code></pre></div>
-<p><img src="graficosConR_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <div class="nota">
 <p>
 El argumento <code>fill</code>controla el color de relleno de las barras y el argumento <code>color</code> el color del borde. Para especificar un color concreto se utiliza la función I(). Si el color varía con otra variable <strong>z</strong>, se especifica esta dependencia escribiendo fill=<strong>z</strong>.
 </p>
 </div>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="gráficos-básicos-en-el-análisis-de-datos.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(sleep_total,<span class="at">data=</span>msleep,<span class="at">bins=</span><span class="dv">12</span>,<span class="at">fill=</span>vore) <span class="co">#distribución del tiempo de sueño según dieta del mamifero. Representación poco adecuada en general.</span></span></code></pre></div>
-<p><img src="graficosConR_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
 <div id="diagrama-de-caja-boxplot" class="section level3" number="1.1.2">
 <h3><span class="header-section-number">1.1.2</span> Diagrama de caja (boxplot)</h3>
@@ -298,7 +297,7 @@ El argumento <code>fill</code>controla el color de relleno de las barras y el ar
 </p>
 <p>Esta representación es especialmente adecuada cuando se quiere describir como varía la distribución de una variable numérica en función de una variable categórica. Así, la distribución del tiempo de sueño según la dieta del mamífero se puede representar de la siguiente manera:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="gráficos-básicos-en-el-análisis-de-datos.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(vore,sleep_total,<span class="at">data=</span>msleep,<span class="at">geom=</span><span class="st">&quot;boxplot&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;Dieta&quot;</span>)</span></code></pre></div>
-<p><img src="graficosConR_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <div class="ej">
 <p>
 Cargar la base de datos de la encuesta nacional americana <code>nhs</code> y representar la distribución del índice de masa corporal (imc) según el sexo y la raza.
@@ -311,9 +310,9 @@ Cargar la base de datos de la encuesta nacional americana <code>nhs</code> y rep
 <h3><span class="header-section-number">1.1.3</span> Diagrama de barras</h3>
 <p>Los diagramas de barras permiten representar la distribución de una variable categórica. En esta representación, cada categoría viene representada por una barra cuya altura es proporcional a su frecuencia en la muestra.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="gráficos-básicos-en-el-análisis-de-datos.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(raza,<span class="at">data=</span>nhs) <span class="co">#Distribución de las razas en la muestra de la encuesta americana </span></span></code></pre></div>
-<p><img src="graficosConR_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="gráficos-básicos-en-el-análisis-de-datos.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(raza,<span class="at">data=</span>nhs,<span class="at">fill=</span>sexo,<span class="at">color=</span><span class="fu">I</span>(<span class="st">&quot;black&quot;</span>)) <span class="co">#Distribución del sexo segun la raza ```</span></span></code></pre></div>
-<p><img src="graficosConR_files/figure-html/unnamed-chunk-42-2.png" width="672" /></p>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-13-2.png" width="672" /></p>
 <p>Utilizando el argumento <code>fill</code> se puede ver como varia la distribución de una variable respecto a otra (aquí el sexo según la raza). El gráfico obtenido resulta poco claro y veremos más adelante como mejorarlo.</p>
 <div class="ej">
 <p>
@@ -329,14 +328,14 @@ Representar la distribución del “sobrepeso” (imc&gt;25) según la raza, uti
 <p>Para describir la relación entre dos variables cuantitativas se suele utilizar gráficos de dispersión. Estos gráficos describen esta relación mediante una nube de puntos en un plano cartesiano. Cada punto de la nube corresponde a una fila de la base de datos y cada una de las variables corresponde a un eje.
 En el gráfico siguiente se describe la relación entre las horas de sueño y el peso del animal:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="gráficos-básicos-en-el-análisis-de-datos.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(bodywt,sleep_total,<span class="at">data=</span>msleep,<span class="at">xlab=</span><span class="st">&quot;peso (en kg, escala log)&quot;</span>,<span class="at">log=</span><span class="st">&quot;x&quot;</span>)</span></code></pre></div>
-<p><img src="graficosConR_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>Ajustando una curva suave (“smooth”) a la nube de puntos, se puede apreciar mejor la tendencia en esta relación:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="gráficos-básicos-en-el-análisis-de-datos.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(bodywt,sleep_total,<span class="at">data=</span>msleep,<span class="at">log=</span><span class="st">&quot;x&quot;</span>,<span class="at">geom=</span><span class="st">&quot;smooth&quot;</span>)</span></code></pre></div>
-<p><img src="graficosConR_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="gráficos-básicos-en-el-análisis-de-datos.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#qplot(bodywt,sleep_total,data=msleep,log=&quot;x&quot;,geom=&quot;smooth&quot;, method=&quot;lm&quot;) ## para ajutar una recta; &quot;lm&quot;: linear model</span></span></code></pre></div>
 <p>Para evitar los problemas de solapamiento de puntos en la representación se puede poner algo de ruido en los datos ( <code>geom="jitter"</code> ), jugar con el tamaño de los puntos (<code>size</code>) o utilizar el parámetro de transparencia (<code>alpha</code>):</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="gráficos-básicos-en-el-análisis-de-datos.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(edad, imc,<span class="at">data=</span>nhs,<span class="at">alpha=</span><span class="fu">I</span>(.<span class="dv">1</span>),<span class="at">size=</span><span class="fu">I</span>(<span class="dv">1</span>))</span></code></pre></div>
-<p><img src="graficosConR_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="gráficos-básicos-en-el-análisis-de-datos.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#qplot(edad, imc,data=nhs, alpha=I(.1),size=I(1), geom=&quot;jitter&quot;) #Mejor resultado añadiendo algo de ruido</span></span></code></pre></div>
 <div class="ej">
 <p>
@@ -348,10 +347,10 @@ Utilizando la encuesta nacional americana, describir la relación entre la edad 
 <h3><span class="header-section-number">1.2.2</span> Dotchart</h3>
 <p>Si una de las variables es categórica y tiene muchas categorías, el gráfico de dispersión puede ser también apropiado:</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="gráficos-básicos-en-el-análisis-de-datos.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(sleep_total,order,<span class="at">data=</span>msleep,<span class="at">col=</span>vore) </span></code></pre></div>
-<p><img src="graficosConR_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p>Pero, es recomendable para mayor claridad ordenar la variable categórica de acuerdo a la otra variable:</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="gráficos-básicos-en-el-análisis-de-datos.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(sleep_total,<span class="fu">reorder</span>(order,sleep_total),<span class="at">data=</span>msleep,<span class="at">col=</span>vore,<span class="at">ylab=</span><span class="st">&quot;horas de sueño&quot;</span>)</span></code></pre></div>
-<p><img src="graficosConR_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <div class="ej">
 <p>
 Describir con un gráfico similar al anterior, los datos de la base de datos <code>islands</code> sobre superficies de islas. Puede ser oportuno recurrir a una escala log.
@@ -364,10 +363,10 @@ Describir con un gráfico similar al anterior, los datos de la base de datos <co
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="gráficos-básicos-en-el-análisis-de-datos.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(gapminder) <span class="co">#base de datos sobre esperanza de vida según caracteristicas socio-demograficas del pais</span></span>
 <span id="cb22-2"><a href="gráficos-básicos-en-el-análisis-de-datos.html#cb22-2" aria-hidden="true" tabindex="-1"></a>datos<span class="ot">=</span><span class="fu">subset</span>(gapminder,country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Spain&quot;</span>,<span class="st">&quot;Greece&quot;</span>,<span class="st">&quot;Poland&quot;</span>)) <span class="co">#sólo se consideran España, Grecia y Polonia</span></span>
 <span id="cb22-3"><a href="gráficos-básicos-en-el-análisis-de-datos.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(year,lifeExp,<span class="at">data=</span>datos,<span class="at">geom=</span><span class="st">&quot;line&quot;</span>,<span class="at">color=</span>country)</span></code></pre></div>
-<p><img src="graficosConR_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <p>Sin embargo para representar la tendencia se utilizará la opción <code>geom="smooth"</code>:</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="gráficos-básicos-en-el-análisis-de-datos.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(year,lifeExp,<span class="at">data=</span>gapminder,<span class="at">geom=</span><span class="st">&quot;smooth&quot;</span>,<span class="at">color=</span>continent,<span class="at">se=</span><span class="cn">FALSE</span>) <span class="co">#se=FALSE para quitar intervalos de confianza</span></span></code></pre></div>
-<p><img src="graficosConR_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
+<p><img src="graficosConR_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <div class="ej">
 <p>
 Describir con gráficos similares a los anteriores, los datos de la base de datos <code>cancer</code> sobre la evolución de las tasas de mortalidad por cáncer en España en el periodo 1975-2012. Empezar por ejemplo, representando la evolución de la mortalidad por cáncer de pulmón según el sexo.

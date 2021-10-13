@@ -24,7 +24,7 @@
 <meta name="author" content="Olivier Nuñez" />
 
 
-<meta name="date" content="2021-10-11" />
+<meta name="date" content="2021-10-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -336,8 +336,8 @@ Se puede definir una lista así:
 x &lt;- 1:5
 ```</code></pre>
 <p>Una de las opciones más útiles es la opción <code>echo</code>. Por defecto <code>echo=TRUE</code>, y el bloque de código R se inserta en el documento generado:</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="rmarkdown.html#cb80-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb80-2"><a href="rmarkdown.html#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="rmarkdown.html#cb82-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb82-2"><a href="rmarkdown.html#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x)</span></code></pre></div>
 <pre><code>## [1] 1 2 3 4 5</code></pre>
 <p>Pero, si la opción <code>echo=FALSE</code>, entonces el código R ya no se inserta en el documento, y solo se el resultado será visible:</p>
 <pre><code>## [1] 1 2 3 4 5</code></pre>
@@ -381,10 +381,10 @@ x &lt;- 1:5
 <div id="tablas-cruzadas" class="section level3" number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> Tablas cruzadas</h3>
 <p>Por defecto, las tablas generadas por la función <code>table</code> se muestran tal y como aparecen en la consola de R, es decir, en texto sin formato:</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="rmarkdown.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># titanic&lt;-ftable(Survived~Class,data=Titanic)</span></span>
-<span id="cb83-2"><a href="rmarkdown.html#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Supervivencia al Titanic según clase</span></span>
-<span id="cb83-3"><a href="rmarkdown.html#cb83-3" aria-hidden="true" tabindex="-1"></a>titanic<span class="ot">&lt;-</span><span class="fu">apply</span>(Titanic,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>),sum)</span>
-<span id="cb83-4"><a href="rmarkdown.html#cb83-4" aria-hidden="true" tabindex="-1"></a>titanic</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="rmarkdown.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># titanic&lt;-ftable(Survived~Class,data=Titanic)</span></span>
+<span id="cb85-2"><a href="rmarkdown.html#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Supervivencia al Titanic según clase</span></span>
+<span id="cb85-3"><a href="rmarkdown.html#cb85-3" aria-hidden="true" tabindex="-1"></a>titanic<span class="ot">&lt;-</span><span class="fu">apply</span>(Titanic,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>),sum)</span>
+<span id="cb85-4"><a href="rmarkdown.html#cb85-4" aria-hidden="true" tabindex="-1"></a>titanic</span></code></pre></div>
 <pre><code>##       Survived
 ## Class   No Yes
 ##   1st  122 203
@@ -392,10 +392,10 @@ x &lt;- 1:5
 ##   3rd  528 178
 ##   Crew 673 212</code></pre>
 <p>Su presentación se puede mejorar utilizando la función <code>kable</code> de la extensión <code>knitr</code>:</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="rmarkdown.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb85-2"><a href="rmarkdown.html#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(titanic,<span class="at">caption=</span><span class="st">&quot;Supervivencia a la catastrofe del Titanic según la clase&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="rmarkdown.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb87-2"><a href="rmarkdown.html#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(titanic,<span class="at">caption=</span><span class="st">&quot;Supervivencia a la catastrofe del Titanic según la clase&quot;</span>)</span></code></pre></div>
 <table>
-<caption><span id="tab:unnamed-chunk-119">Table 3.1: </span>Supervivencia a la catastrofe del Titanic según la clase</caption>
+<caption><span id="tab:unnamed-chunk-91">Table 3.1: </span>Supervivencia a la catastrofe del Titanic según la clase</caption>
 <thead>
 <tr class="header">
 <th align="left"></th>
@@ -431,11 +431,11 @@ x &lt;- 1:5
 <h3><span class="header-section-number">3.3.2</span> Base de datos</h3>
 <p>Respecto a las bases de datos (<code>tibble</code> o <code>data.frame</code>), la presentación HTML por defecto es el contenido que aparece en consola. Este formato puede ser poco adecuado si la tabla excede una cierta dimensión.</p>
 <p>Una alternativa es usar la función <code>paged_table</code>, que muestra una representación HTML paginada de la base:</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="rmarkdown.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(gapminder)</span>
-<span id="cb86-2"><a href="rmarkdown.html#cb86-2" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>(gapminder)</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="rmarkdown.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(gapminder)</span>
+<span id="cb88-2"><a href="rmarkdown.html#cb88-2" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>(gapminder)</span></code></pre></div>
 <p>Otra alternativa es la función <code>datatable</code> de la extensión <code>DT</code>, que ofrece aún más interactividad:</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="rmarkdown.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
-<span id="cb87-2"><a href="rmarkdown.html#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(gapminder)</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="rmarkdown.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="cb89-2"><a href="rmarkdown.html#cb89-2" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(gapminder)</span></code></pre></div>
 <p>En cualquier caso, no es recomendable mostrar una tabla de datos muy grandes de esta manera porque el archivo HTML resultante contendría todos los datos y, por lo tanto, sería muy grande.</p>
 
 </div>
