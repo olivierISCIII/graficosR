@@ -24,7 +24,7 @@
 <meta name="author" content="Olivier Nuñez" />
 
 
-<meta name="date" content="2022-05-06" />
+<meta name="date" content="2022-05-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -162,6 +162,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="2.1.3" data-path="gráficos-avanzados.html"><a href="gráficos-avanzados.html#capas-geoms"><i class="fa fa-check"></i><b>2.1.3</b> Capas (<code>geoms</code>)</a></li>
 <li class="chapter" data-level="2.1.4" data-path="gráficos-avanzados.html"><a href="gráficos-avanzados.html#facetas"><i class="fa fa-check"></i><b>2.1.4</b> Facetas</a></li>
 <li class="chapter" data-level="2.1.5" data-path="gráficos-avanzados.html"><a href="gráficos-avanzados.html#toque-final"><i class="fa fa-check"></i><b>2.1.5</b> Toque final</a></li>
+<li class="chapter" data-level="2.1.6" data-path="gráficos-avanzados.html"><a href="gráficos-avanzados.html#unos-graficos-destacados"><i class="fa fa-check"></i><b>2.1.6</b> Unos graficos destacados</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="gráficos-avanzados.html"><a href="gráficos-avanzados.html#mapas"><i class="fa fa-check"></i><b>2.2</b> Mapas</a>
 <ul>
@@ -396,7 +397,7 @@ x &lt;- 1:5
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="rmarkdown.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
 <span id="cb87-2"><a href="rmarkdown.html#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(titanic,<span class="at">caption=</span><span class="st">&quot;Supervivencia a la catastrofe del Titanic según la clase&quot;</span>)</span></code></pre></div>
 <table>
-<caption><span id="tab:unnamed-chunk-96">Table 3.1: </span>Supervivencia a la catastrofe del Titanic según la clase</caption>
+<caption><span id="tab:unnamed-chunk-102">Table 3.1: </span>Supervivencia a la catastrofe del Titanic según la clase</caption>
 <thead>
 <tr class="header">
 <th align="left"></th>
@@ -1335,7 +1336,7 @@ x &lt;- 1:5
 </div>
 <div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="rmarkdown.html#cb92-1" aria-hidden="true" tabindex="-1"></a>fit2 <span class="ot">=</span> <span class="fu">lm</span>(lifeExp <span class="sc">~</span> <span class="fu">log</span>(gdpPercap,<span class="dv">2</span>) <span class="sc">+</span> continent,<span class="at">data=</span>gapminder)</span>
 <span id="cb92-2"><a href="rmarkdown.html#cb92-2" aria-hidden="true" tabindex="-1"></a>T2 <span class="ot">=</span> <span class="fu">tbl_regression</span>(fit2)</span>
-<span id="cb92-3"><a href="rmarkdown.html#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tbl_merge</span>(<span class="fu">list</span>(T1,T2),<span class="fu">c</span>(<span class="st">&quot;Crude&quot;</span>,<span class="st">&quot;Adjusted&quot;</span>))</span></code></pre></div>
+<span id="cb92-3"><a href="rmarkdown.html#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tbl_merge</span>(<span class="fu">list</span>(T1,T2),<span class="fu">c</span>(<span class="st">&quot;Efectos crudos&quot;</span>,<span class="st">&quot;Efectos ajustados&quot;</span>))</span></code></pre></div>
 <div id="xvditfybvg" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
@@ -1745,10 +1746,10 @@ x &lt;- 1:5
     <tr>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1"><strong>Characteristic</strong></th>
       <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3">
-        <span class="gt_column_spanner">Crude</span>
+        <span class="gt_column_spanner">Efectos crudos</span>
       </th>
       <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3">
-        <span class="gt_column_spanner">Adjusted</span>
+        <span class="gt_column_spanner">Efectos ajustados</span>
       </th>
     </tr>
     <tr>

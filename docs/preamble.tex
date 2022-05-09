@@ -1,0 +1,69 @@
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+
+\usepackage{xcolor}
+\usepackage[framemethod=default]{mdframed}
+
+
+\newcounter{ejcnt}[section]
+\numberwithin{ejcnt}{section}
+
+%\newenvironment{nota}
+%{ \rule{1ex}{1ex}\hspace{\stretch{1}} }
+%{ \hspace{\stretch{1}}\rule{1ex}{1ex} }
+
+
+\global\mdfdefinestyle{exampledefault}{%
+linecolor=lightgray,linewidth=1pt,%
+leftmargin=1cm,rightmargin=1cm,
+}
+
+%\newenvironment{nota}[1]{%
+\newenvironment{nota}{%
+\mdfsetup{%
+frametitle={\colorbox{white}{\,Nota\,}},
+%frametitle={\colorbox{white}{\,#1\,}},
+frametitleaboveskip=-\ht\strutbox,
+frametitlealignment=\raggedright
+}%
+\begin{mdframed}[style=exampledefault]
+}{\end{mdframed}}
+
+\newenvironment{rien}{%
+\begin{mdframed}[style=exampledefault]
+}{\end{mdframed}}
+
+
+
+\newenvironment{ej}[1][]{%
+	\refstepcounter{ejcnt}%
+	\par\medskip%
+	\noindent% 
+	\textbf{Ejercicio \theejcnt \;\;}% 
+	\rmfamily%
+}{\medskip}
+
+
+%\newenvironment{ej}[1][]{\refstepcounter{ej}\par\medskip
+%   \noindent \textbf{Ejercicio #1} \rmfamily}{\medskip}
+
+%\newenvironment{ej}% environment name
+%{% begin code
+%  \par\vspace{\baselineskip}\noindent
+%  \leftmargin=0.3in\rightmargin=0.3in
+%  \textbf{Ejercicio:}
+%  %\par\vspace{\baselineskip}\noindent\ignorespaces
+%}%
+%{% end code
+%  \ignorespacesafterend
+%}
+
+%\makeatletter
+%\renewcommand{\subsubsection}{\ttl@straightclass{subsubsection}}
+%\makeatother
+%\titleformat{\subsubsection}[hang]
+%  {\fontsize{36}{42}\selectfont}
+%  {\thesubsubsection}
+%  {1em}
+%  {}
+%  []
