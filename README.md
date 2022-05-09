@@ -1,4 +1,4 @@
 # graficosR
 
-Los apuntes se pueden leer [Aqui](https://rawcdn.githack.com/olivierISCIII/graficosR/7912534bb2f5faba304312230e4bde08635e205c/docs/gr%C3%A1ficos-avanzados.html)
+Los apuntes se pueden leer [aqui](https://rawcdn.githack.com/olivierISCIII/graficosR/100a26899eabae3a083a1ee71caf26e6ae3176be/docs/index.html)
 
