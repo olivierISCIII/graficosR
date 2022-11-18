@@ -1,0 +1,28 @@
+﻿CODIGO;VALOR;M;F;A
+14;Cavidad Oral y Faringe;1;1;1
+15;Esófago;1;1;1
+16;Estómago;1;1;1
+18;Cólon;1;1;1
+19;Recto ;1;1;1
+22;Hígado ;1;1;1
+23;Vesícula biliar;1;1;1
+25;Páncreas;1;1;1
+32;Laringe;1;1;1
+34;Pulmón ;1;1;1
+43;Melanoma de piel;1;1;1
+50;Mama;0;1;1
+53;Cérvix Uterino ;0;1;1
+54;Cuerpo Uterino;0;1;1
+56;Ovario;0;1;1
+61;Próstata;1;0;1
+62;Testículo;1;0;1
+64;Riñón;1;1;1
+67;Vejiga urinaria;1;1;1
+71;Encéfalo y sistema nervioso;1;1;1
+73;Tiroides;1;1;1
+81;Linfoma de Hodgkin;1;1;1
+82;Linfomas no hodgkinianos;1;1;1
+90;Mieloma;1;1;1
+91;Leucemias;1;1;1
+99;Otros;1;1;1
+100;Todos, excepto de piel no melanoma ;2;2;2
