@@ -1,0 +1,17 @@
+model
+{
+# Para cada una de las J observaciones
+for(i in 1:J)
+	{
+	X[i] ~ dpois(mu[i])
+	log(mu[i]) <- log(Y[i]) + a + YEAR*year[i] + YEAR2*year2[i] + EDAD1*edad1[i] + EDAD2*edad2[i] + EDAD3*edad3[i] + EDAD4*edad4[i]   	
+	}
+# Priors 
+a ~ dnorm(0.0, 0.001)
+YEAR ~ dnorm(0.0, 0.001) 
+YEAR2 ~ dnorm(0.0, 0.001) 
+EDAD1 ~ dnorm(0.0, 0.001) 
+EDAD2 ~ dnorm(0.0, 0.001) 
+EDAD3 ~ dnorm(0.0, 0.001) 
+EDAD4 ~ dnorm(0.0, 0.001)
+}
