@@ -1,0 +1,49 @@
+﻿ICDO;SEXO;VALOR;CALCULO
+14;M;Cavidad Oral y Faringe;1
+15;M;Esófago;1
+16;M;Estómago;1
+18;M;Cólon;1
+19;M;Recto ;1
+22;M;Hígado ;1
+23;M;Vesícula biliar;1
+25;M;Páncreas;1
+32;M;Laringe;1
+34;M;Pulmón ;1
+43;M;Melanoma de piel;1
+61;M;Próstata;1
+62;M;Testículo;1
+64;M;Riñón;1
+67;M;Vejiga urinaria;1
+71;M;Encéfalo y sistema nervioso;1
+73;M;Tiroides;1
+81;M;Linfoma de Hodgkin;1
+82;M;Linfomas no hodgkinianos;1
+90;M;Mieloma;1
+91;M;Leucemias;1
+99;M;Otros;1
+100;M;Todos, excepto de piel no melanoma ;0
+14;F;Cavidad Oral y Faringe;1
+15;F;Esófago;1
+16;F;Estómago;1
+18;F;Cólon;1
+19;F;Recto ;1
+22;F;Hígado ;1
+23;F;Vesícula biliar;1
+25;F;Páncreas;1
+32;F;Laringe;1
+34;F;Pulmón ;1
+43;F;Melanoma de piel;1
+50;F;Mama;1
+53;F;Cérvix Uterino ;1
+54;F;Cuerpo Uterino;1
+56;F;Ovario;1
+64;F;Riñón;1
+67;F;Vejiga urinaria;1
+71;F;Encéfalo y sistema nervioso;1
+73;F;Tiroides;1
+81;F;Linfoma de Hodgkin;1
+82;F;Linfomas no hodgkinianos;1
+90;F;Mieloma;1
+91;F;Leucemias;1
+99;F;Otros;1
+100;F;Todos, excepto de piel no melanoma ;0
